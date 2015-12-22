@@ -1,11 +1,11 @@
 <?php
 /**
  * @package    twitterfeed
- * @date       Tue Jul 28 2015 14:02:04
- * @version    2.0.8
+ * @date       Thu Dec 10 2015 20:39:34
+ * @version    2.1.3
  * @author     Askupa Software <contact@askupasoftware.com>
  * @link       http://products.askupasoftware.com/twitter-feed/
- * @copyright  2014 Askupa Software
+ * @copyright  2015 Askupa Software
  */
 
 namespace TwitterFeed;
@@ -42,7 +42,7 @@ class TwitterFeed extends Plugin\AbstractPlugin
         
         $this->register_assets();
         
-//        add_filter( 'mce_css', array( __CLASS__, 'editor_css' ) );
+        self::check_environment();
     }
     
     public function generate_defines()
@@ -54,7 +54,7 @@ class TwitterFeed extends Plugin\AbstractPlugin
         define( __NAMESPACE__.'\JS_URL', plugin_dir_url( $basepath ).'app/assets/js' );
         define( __NAMESPACE__.'\CSS_URL', plugin_dir_url( $basepath ).'app/assets/css' );
         define( __NAMESPACE__.'\IMG_URL', plugin_dir_url( $basepath ).'app/assets/img' );
-        define( __NAMESPACE__.'\PLUGIN_VERSION', '2.0.8' );
+        define( __NAMESPACE__.'\PLUGIN_VERSION', '2.1.3' );
     }
     
     public function load_classes()
@@ -104,9 +104,9 @@ class TwitterFeed extends Plugin\AbstractPlugin
                 )),
                 new \Amarkal\Assets\Stylesheet(array(
                     'handle'        => 'font-awesome',
-                    'url'           => '//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css',
+                    'url'           => '//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css',
                     'facing'        => array( 'public' ),
-                    'version'       => '4.3.0'
+                    'version'       => '4.5.0'
                 ))
             )
         );
@@ -130,10 +130,23 @@ class TwitterFeed extends Plugin\AbstractPlugin
         }
     }
     
-//    static function editor_css( $wp ) 
-//    {
-//        $wp .= ',' . CSS_URL.'/editor.min.css';
-//        return $wp;
-//    }
+    static function check_environment()
+    {
+        // Check if cURL is installed
+        if( !_is_curl_installed() )
+        {
+            \Amarkal\Extensions\WordPress\Admin\Notifier::error("<strong>Twitter Feed</strong> requires the <strong>cURL</strong> extension, which is not installed.");
+        }
+        
+        // Check if tokens were provided
+        global $twitterfeed_options;
+        if( !$twitterfeed_options['oauth_access_token'] || 
+            !$twitterfeed_options['oauth_access_token_secret'] ||
+            !$twitterfeed_options['consumer_key'] ||
+            !$twitterfeed_options['consumer_secret'])
+        {
+            \Amarkal\Extensions\WordPress\Admin\Notifier::error("<strong>Twitter Feed</strong> cannot retrieve tweets until you provide your Twitter API Tokens. <a href=\"".admin_url( 'admin.php?page=twitter_feed&section=tokens' )."\">Click here</a> to provide your tokens.");
+        }
+    }
 }
 new TwitterFeed();

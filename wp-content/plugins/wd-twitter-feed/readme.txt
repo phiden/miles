@@ -2,8 +2,8 @@
 Contributors: Askupa Software
 Tags: twitter, tweet, tweets, feed, timeline, widget, customizable, comments, social, social media, shortcode, caching, 
 Requires at least: 3.0
-Tested up to: 4.2.3
-Stable tag: 2.0.8
+Tested up to: 4.4
+Stable tag: 2.1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -89,6 +89,29 @@ Since version 1.1, Twitter Feed supports making queries using the new Twitter se
 7. Usage status tracker
 
 == Changelog ==
+
+= 2.1.3 =
+* (UPDATE) Bumped up dependencies versions
+* (FIX) Tweet time is now relative to GMT instead of local time
+* (FIX) Showing an error message when cURL is not installed
+* (FIX) Showing an error message when Twitter returns 0 results
+
+= 2.1.2 =
+* (UPDATE) Twitter-API-Exchange version 1.0.4
+* (UPDATE) Changed the 'favorites' start icon to heart (as has been done by Twitter)
+* (FIX) Caching related bug
+* (FIX) Bug that was causing the search resource to show retweets/replies when they are set to off
+* (FIX) Bug that was causing widgets not to show retweet credits
+
+= 2.1.1 =
+* (FIX) Some CSS bugs
+* (UPDATE) Tested under WordPress version 4.3.1
+
+= 2.1.0 =
+* (NEW) You can now set tweet media to automatically show when the page loads (located under Twitter Feed -> Appearance)
+* (NEW) You can now choose to show the url's expanded version (located under Twitter Feed -> Appearance)
+* (FIX) Hashtags with Latin characters are now being rendered correctly
+* (UPDATE) Amarkal Framework v0.3.7
 
 = 2.0.8 =
 * (FIX) Bug that was causing the widget to break
@@ -201,6 +224,9 @@ Since version 1.1, Twitter Feed supports making queries using the new Twitter se
 * Initial release
 
 == Upgrade Notice ==
+
+= 2.1.0 =
+* New features and some bug fixes
 
 = 2.0.8 =
 * Minor bug fixes

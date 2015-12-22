@@ -1,11 +1,11 @@
 <?php
 /**
  * @package    twitterfeed
- * @date       Tue Jul 28 2015 14:02:04
- * @version    2.0.8
+ * @date       Thu Dec 10 2015 20:39:34
+ * @version    2.1.3
  * @author     Askupa Software <contact@askupasoftware.com>
  * @link       http://products.askupasoftware.com/twitter-feed/
- * @copyright  2014 Askupa Software
+ * @copyright  2015 Askupa Software
  */
 
 namespace TwitterFeed\Widgets;

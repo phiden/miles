@@ -1,11 +1,11 @@
 <?php
 /**
  * @package    twitterfeed
- * @date       Tue Jul 28 2015 14:02:04
- * @version    2.0.8
+ * @date       Thu Dec 10 2015 20:39:34
+ * @version    2.1.3
  * @author     Askupa Software <contact@askupasoftware.com>
  * @link       http://products.askupasoftware.com/twitter-feed/
- * @copyright  2014 Askupa Software
+ * @copyright  2015 Askupa Software
  */
 
 namespace TwitterFeed\Parser;
@@ -148,6 +148,10 @@ class TweetsParser
         
         // Fetch the feed
         $resp = $this->fetchFeed($settings);
+        
+        // Make sure Twitter returns some results
+        if( 0 === count($resp) )
+            throw new \Exception('Twitter API returned 0 results for your query.');
         
         return $resp;
     }
@@ -303,13 +307,22 @@ class TweetsParser
                     }
             }
             
+            // Process tweet text
+            $tweet_text = $key->text;
+            if( isset( $this->options['url_type'] ) && $this->options['url_type'] === 'expanded' )
+            {
+                $tweet_text = $this->expand_urls( $key->entities->urls, $tweet_text );
+            }
+            $tweet_text = utf8_encode( $tweet_text ); // Tweet text may contain special characters
+            
+            
             // Create a new Tweet object
             $tweet = new Tweet(array(
                 'created_at' => $key->created_at, 
                 'image_url' => $key->user->profile_image_url_https, 
                 'screen_name' => $key->user->screen_name, 
                 'user_name' => $key->user->name, 
-                'tweet_text' => utf8_encode($key->text), // Tweet text may contain special characters
+                'tweet_text' => $tweet_text, 
                 'id_str' => $key->id_str,
                 'retweeter' => $retweeter,
                 'retweet_count' => $key->retweet_count,
@@ -322,5 +335,14 @@ class TweetsParser
         }
 
         return $tweets;
+    }
+    
+    private function expand_urls( $urls, $text )
+    {
+        foreach( $urls as $url )
+        {
+            $text = str_replace( $url->url, $url->expanded_url, $text );
+        }
+        return $text;
     }
 }

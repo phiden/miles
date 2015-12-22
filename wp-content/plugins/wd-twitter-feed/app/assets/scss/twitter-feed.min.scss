@@ -34,6 +34,7 @@ $break-large: 920px;
     clip: rect(0 0 0 0); 
     height: 1px; width: 1px; 
     margin: -1px; padding: 0; border: 0; 
+    left: 0; top: 0;
 }
 /* Debug window
 /*----------------------------------------*/
@@ -197,13 +198,13 @@ $tooltip-border-radius: 5px;
                 background-color: #333;
                 position:absolute;
                 left:20px;
-                bottom:-20px;
+                bottom:-15px;
                 border-top:none;
                 box-shadow: none;
                 border-radius: 0 0 10px 10px;
                 padding: 0 10px 3px;
                 content: '';
-                width:120px;
+                width:150px;
                 height:15px;
             }
             
@@ -212,7 +213,7 @@ $tooltip-border-radius: 5px;
             .atf-tweet-time {
                 position: absolute;
                 left: 22px;
-                bottom:-18px;
+                bottom:-12px;
                 line-height: 18px;
                 z-index: 2;
                 color: silver;

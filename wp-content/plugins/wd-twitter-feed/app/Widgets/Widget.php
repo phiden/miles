@@ -1,4 +1,12 @@
 <?php
+/**
+ * @package    twitterfeed
+ * @date       Thu Dec 10 2015 20:39:34
+ * @version    2.1.3
+ * @author     Askupa Software <contact@askupasoftware.com>
+ * @link       http://products.askupasoftware.com/twitter-feed/
+ * @copyright  2015 Askupa Software
+ */
 
 namespace TwitterFeed\Widgets;
 
@@ -41,12 +49,16 @@ abstract class Widget
                     echo $instance['subtitle'];
                 }
 
-
-                $instance['show'] = explode(',', $instance['show']);
-                $instance['replies'] = $instance['replies'] == 'ON';
-                $instance['retweets'] = $instance['retweets'] == 'ON';
+                $instance['replies'] = $instance['replies'] == 'on';
+                $instance['retweets'] = $instance['retweets'] == 'on';
                 $instance['resource'] = 'Resource_'.$instance['resource'];
 
+                // Show is not set for ScrollingTweets
+                if(isset($instance['show'])) 
+                {
+                    $instance['show'] = explode(',', $instance['show']);
+                }
+                
                 // Render the tweets
                 static::render( $instance );
 

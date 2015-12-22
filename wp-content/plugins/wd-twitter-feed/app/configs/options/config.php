@@ -1,11 +1,11 @@
 <?php
 /**
  * @package    twitterfeed
- * @date       Tue Jul 28 2015 14:02:04
- * @version    2.0.8
+ * @date       Thu Dec 10 2015 20:39:34
+ * @version    2.1.3
  * @author     Askupa Software <contact@askupasoftware.com>
  * @link       http://products.askupasoftware.com/twitter-feed/
- * @copyright  2014 Askupa Software
+ * @copyright  2015 Askupa Software
  */
 
 use Amarkal\Extensions\WordPress\Options;
@@ -22,7 +22,7 @@ return array(
     'sidebar_icon'  => 'dashicons-twitter',
     'footer_icon'   => TwitterFeed\IMG_URL.'/askupa-logo.png',
     'footer_text'   => date("Y").' © Askupa Software',
-    'subfooter_text'=> '',
+    'subfooter_text'=> 'If you like Twitter Feed, please give it <a target="_blank" href="https://wordpress.org/support/view/plugin-reviews/wd-twitter-feed?filter=5#postform">★★★★★</a> rating on WordPress.com. Thanks!',
     'global_variable'=> 'twitterfeed_options',
     'sections'      => array(
         new Options\Section(array(
@@ -45,12 +45,12 @@ return array(
                         )),
                         new Components\Text(array(
                             'name'      => 'consumer_key',
-                            'title'     => 'API Key',
+                            'title'     => 'Consumer Key (API Key)',
                             'default'   => ''
                         )),
                         new Components\Text(array(
                             'name'      => 'consumer_secret',
-                            'title'     => 'API Secret',
+                            'title'     => 'Consumer Secret (API Secret)',
                             'default'   => ''
                         ))
                     )
@@ -143,6 +143,22 @@ return array(
             'icon'          => 'fa-paint-brush',
             'description'   => 'Setup the look and feel of Twitter Feed',
             'fields'        => array(
+                new Components\ToggleButton(array(
+                    'name'          => 'url_type',
+                    'title'         => 'URL Shortening',
+                    'help'          => 'Choose between showing the short or the expanded version of the urls in the tweet text.',
+                    'default'       => 'short',
+                    'labels'        => [
+                        'short'    => 'Short',
+                        'expanded' => 'Expanded'
+                    ]
+                )),
+                new Components\ToggleButton(array(
+                    'name'          => 'expand_media',
+                    'title'         => 'Expand Tweet Media',
+                    'help'          => 'If set to "ON", tweet media will be expanded automatically when the page loads. Otherwise, media will be initially hidden, and a "Show Media" button will appear.',
+                    'default'       => 'OFF'
+                )),
                 new Components\ToggleButton(array(
                     'name'          => 'css_toggle',
                     'title'         => 'Use Custom CSS',
