@@ -177,7 +177,19 @@ header a {
   }
 }
 
-#social-nav ul li {
+header .social-nav ul li {
+  
+  img {
+   
+   -webkit-box-shadow: 1px 1px 1px 0px rgba(161,161,161,1);
+  -moz-box-shadow: 1px 1px 1px 0px rgba(161,161,161,1);
+  box-shadow: 1px 1px 1px 0px rgba(161,161,161,1); 
+    
+  }
+  
+}
+
+.social-nav ul li {
   
   display:inline-block;
 }
