@@ -787,3 +787,69 @@ dl.gallery-item {
 	/*float:left;
 	margin-top:-30px;*/
 }
+
+
+/* ------------------------ BEGIN RESPONSIVE -------------------------*/
+
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 480px) {
+    
+  #header-content {
+    
+    
+  }
+
+  .header-text {
+      
+    font-size:3em;
+  }
+  
+  .header-text-sub {
+    
+    font-size:1.5em;
+    padding-left:20px;
+    padding-right:20px;
+  }
+    
+  #main-nav {
+    
+    width:100%;
+    
+    ul {
+      
+      a {
+        
+        display:list-item;
+        height:auto;
+        overflow: auto;
+        
+        li {
+        
+          
+          display:list-item;
+          
+        }
+        
+        .main-nav-box {
+          
+          width:100%;
+          padding-left:0;
+          padding-right:0;
+          
+          h3,
+          h5 {
+            
+            padding-left:20px;
+            
+          }
+        }
+        
+      }
+      
+      
+    }
+  }
+  
+  
+}
