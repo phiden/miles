@@ -271,6 +271,39 @@ header .social-nav ul li {
 
 /*--------------------- END MAIN NAVIGATION ---------------------*/
 
+.page-section {
+  
+  h3 {
+    
+    padding-bottom:30px;
+  }
+  
+  h4 {
+    
+    padding-bottom:15px;
+  }
+}
+
+#publicity-photos {
+  
+  li {
+    
+    display:inline-block;
+    vertical-align: top;
+    list-style: none;
+    
+    .publicity-thumbnail {
+      
+      img {
+        
+        padding-bottom:10px;
+      }
+      
+    }  
+  }
+  
+}
+
 
 #left-col {
   
