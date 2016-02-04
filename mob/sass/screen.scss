@@ -91,6 +91,9 @@ footer {
 	font-size:.5em;
 	padding-bottom:20px;
 	height:150px;
+
+	padding-top:30px;
+	
 }
 
 .header-text {
@@ -172,6 +175,12 @@ header a {
     
     background-image:url(../img/backstory.jpg);
     background-size: cover;
+  }
+  
+  #publicity-box {
+    
+    background-image:url(../img/pub.jpg);
+    background-size:cover;
   }
     
   .main-nav-box {
@@ -572,6 +581,7 @@ display:none;
 	width:980px;
 	margin-top:20px;
 	margin-bottom:20px;
+	padding-top:30px;
 	
 }
 .section {
@@ -795,6 +805,13 @@ dl.gallery-item {
   and (min-device-width: 320px) 
   and (max-device-width: 480px) {
     
+    
+  .line-break {
+    
+    display:block;
+    
+  }
+  
   #header-content {
     
     
